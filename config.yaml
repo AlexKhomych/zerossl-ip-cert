@@ -1,0 +1,26 @@
+dataDir: /var/local/zerossl
+logFile: /var/local/zerossl/log.txt 
+cleanUnfinished: true 
+metricsPort: 2112
+maxWaitTime: 180 # in minutes
+checkInterval: 30 # in seconds
+retryMaxAttempts: 5
+retryWaitTime: 15 # in seconds
+certConfigs:
+  - confId: 1
+    apiKey: [key]
+    country: ""
+    locality: ""
+    organization: ""
+    commonName: [ip]
+    days: 90
+    keyType: ecdsa
+    keyBits: 4096
+    keyCurve: P-256
+    sigAlg: ECDSA-SHA256
+    strictDomains: 1
+    verifyMethod: HTTP_CSR_HASH
+    verifyHook: /var/local/zerossl/verify-hook.sh
+    postHook: /var/local/zerossl/post-hook.sh
+    certFile: /var/local/zerossl/[ip].crt
+    keyFile: /var/local/zerossl/[ip].key
